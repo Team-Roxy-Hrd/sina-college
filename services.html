@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>الخدمات الطلابية</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Cairo', sans-serif;
+    }
+    .container {
+      margin-top: 60px;
+    }
+    .card {
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.07);
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h5 {
+      color: #0d47a1;
+    }
+    .back-link {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container text-center">
+  <h2 class="mb-5">🛠️ الخدمات الطلابية</h2>
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <div class="card p-4">
+        <h5>📄 تقديم شكوى</h5>
+        <p class="text-muted">ارفع شكوى أكاديمية أو إدارية مباشرة للإدارة.</p>
+        <button class="btn btn-outline-danger btn-sm" onclick="openForm('شكوى', 'اكتب شكواك هنا')">ابدأ</button>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card p-4">
+        <h5>📝 تسجيل المواد</h5>
+        <p class="text-muted">سجّل موادك للفصل الدراسي الحالي بسهولة.</p>
+        <button class="btn btn-outline-primary btn-sm" onclick="openForm('تسجيل المواد', 'أدخل أسماء المواد')">تسجيل الآن</button>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card p-4">
+        <h5>📅 جدول المحاضرات</h5>
+        <p class="text-muted">اعرض جدول محاضراتك الأسبوعي بالتفصيل.</p>
+        <button class="btn btn-outline-success btn-sm" onclick="openForm('عرض الجدول', 'أدخل اليوم أو المادة')">عرض الجدول</button>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card p-4">
+        <h5>👤 تعديل البيانات</h5>
+        <p class="text-muted">قم بتحديث بياناتك الشخصية مثل الهاتف أو البريد.</p>
+        <button class="btn btn-outline-warning btn-sm" onclick="openForm('تعديل البيانات', 'أدخل البيانات الجديدة')">تعديل البيانات</button>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card p-4">
+        <h5>📚 تحميل ملفات</h5>
+        <p class="text-muted">احصل على المواد الدراسية المرفقة من الدكاترة.</p>
+        <button class="btn btn-outline-dark btn-sm" onclick="openForm('تحميل ملفات', 'حدد المادة لتحميل ملفاتها')">تحميل</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="back-link text-center mt-5">
+    <a href="dashboard.html" class="btn btn-primary">⬅ العودة للوحة التحكم</a>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="formModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-end">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle">طلب خدمة</h5>
+        <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="handleSubmit(event)">
+          <div class="mb-3">
+            <label id="modalLabel" class="form-label">أدخل البيانات</label>
+            <textarea class="form-control" required id="formInput" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">إرسال</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const modal = new bootstrap.Modal(document.getElementById("formModal"));
+
+  function openForm(title, labelText) {
+    document.getElementById("modalTitle").textContent = title;
+    document.getElementById("modalLabel").textContent = labelText;
+    document.getElementById("formInput").value = "";
+    modal.show();
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    alert("✅ تم إرسال النموذج بنجاح (تجريبي)");
+    modal.hide();
+  }
+</script>
+
+</body>
+</html>
